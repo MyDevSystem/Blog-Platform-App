@@ -30,6 +30,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService(UserRepository userRepository) {
         BlogUserDetailsService blogUserDetailsService = new BlogUserDetailsService(userRepository);
 
+        //for test, to be deleted
         String email = "user@test.com";
         userRepository.findByEmail(email).orElseGet(() -> {
             User newUser = User.builder()
