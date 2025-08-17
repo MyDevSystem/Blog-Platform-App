@@ -1,10 +1,10 @@
 package com.zakdevsystem.blog.controllers;
 
 import com.zakdevsystem.blog.domain.dtos.CreateTagsRequest;
-import com.zakdevsystem.blog.domain.dtos.TagResponse;
+import com.zakdevsystem.blog.domain.dtos.TagDto;
 import com.zakdevsystem.blog.domain.entities.Tag;
 import com.zakdevsystem.blog.mappers.TagMapper;
-import com.zakdevsystem.blog.services.impl.TagService;
+import com.zakdevsystem.blog.services.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +22,18 @@ public class TagController {
     private final TagMapper tagMapper;
 
     @GetMapping
-    public ResponseEntity<List<TagResponse>> getAllTags() {
+    public ResponseEntity<List<TagDto>> getAllTags() {
         List<Tag> tags = tagService.getTags();
-        List<TagResponse> tagResponses = tags.stream().map(tagMapper::toTagResponse).toList();
-        return ResponseEntity.ok(tagResponses);
+        List<TagDto> tagRespons = tags.stream().map(tagMapper::toTagResponse).toList();
+        return ResponseEntity.ok(tagRespons);
     }
 
     @PostMapping
-    public ResponseEntity<List<TagResponse>> createTags(@RequestBody CreateTagsRequest createTagsRequest) {
+    public ResponseEntity<List<TagDto>> createTags(@RequestBody CreateTagsRequest createTagsRequest) {
         List<Tag> savedTags = tagService.createTags(createTagsRequest.getNames());
-        List<TagResponse> createdTagResponses = savedTags.stream().map(tagMapper::toTagResponse).toList();
+        List<TagDto> createdTagRespons = savedTags.stream().map(tagMapper::toTagResponse).toList();
         return new ResponseEntity<>(
-                createdTagResponses,
+                createdTagRespons,
                 HttpStatus.CREATED
         );
     }
@@ -43,5 +43,4 @@ public class TagController {
         tagService.deleteTag(id);
         return ResponseEntity.noContent().build();
     }
-
 }
