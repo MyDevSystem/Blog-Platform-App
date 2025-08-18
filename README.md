@@ -1,6 +1,6 @@
 ﻿# Blog-Platform-App
 
-## A blog platform backend created using Java, Spring Boot and Spring Security
+## A blog platform backend created using Java, PostgreSQL, Spring Boot and Spring Security. 
 
 --------------------------------------------------------------------------------------
 
@@ -15,5 +15,6 @@
 ![03](https://github.com/user-attachments/assets/84c0cb53-b2bf-4184-8600-46607ad3ed01)
 
 ![04](https://github.com/user-attachments/assets/900a1268-481d-483e-b9bc-e3406e55a3bd)
+
 
 
